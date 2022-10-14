@@ -1,7 +1,6 @@
 FROM ubuntu
 
 RUN \
-  add-apt-repository -y ppa:nginx/stable && \
   apt-get update && \
   apt-get install -y nginx && \
   rm -rf /var/lib/apt/lists/* && \
