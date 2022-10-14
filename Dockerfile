@@ -1,4 +1,4 @@
-FROM dockerfile/ubuntu
+FROM ubuntu
 
 RUN \
   add-apt-repository -y ppa:nginx/stable && \
