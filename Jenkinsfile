@@ -1,9 +1,10 @@
 node {
     checkout scm
 
-    def customImage = docker.build("my-image:${env.BUILD_ID}")
+    docker.withRegistry('registrysfiems.azurecr.io', 'ACR') {
 
-    customImage.inside {
-        sh 'make test'
+        def customImage = docker.build("my-image:${env.BUILD_ID}")
+
+        customImage.push()
     }
 }
