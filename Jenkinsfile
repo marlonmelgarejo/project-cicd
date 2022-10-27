@@ -15,7 +15,7 @@ node {
     stage("Deploy Producao"){
         withEnv(["DOCKER_HOST=${docker_host}"]) {
             sshagent( credentials: ['jenkins_remotedocker']) {
-                sh "docker -h ${prod_docker_host} run -d -p 80:80 myapp:${version}"
+                sh "docker -h ${prod_docker_host} run -d -p 80:80 my-image:${env.BUILD_ID}"
             }
         }
     }
