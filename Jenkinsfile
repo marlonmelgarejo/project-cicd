@@ -12,7 +12,7 @@ node {
     
     stage ('Deploy docker remoto') {
         
-        def dockerRun = 'docker container run -d -p 9005:80 registrysfiems.azurecr.io/my-image:${env.BUILD_ID}'
+        def dockerRun = 'docker container run -d -p 9005:80 registrysfiems.azurecr.io/my-image:12'
         
         sshagent(['jenkins_remotedocker']) {
         
