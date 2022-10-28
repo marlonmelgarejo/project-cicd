@@ -13,16 +13,21 @@ node {
     stage ('Deploy docker remoto') {
         
         def dockerRun = 'docker container run -d -p 9005:80 registrysfiems.azurecr.io/my-image:12'
-        def dockerRm = 'docker rm -f $(docker ps -aq)'
         
-        sshagent(['jenkins_remotedocker']) {            
-            
-        sh "ssh -o StrictHostKeyChecking=no cotin@172.16.0.11 ${dockerRm}"
-        
+        sshagent(['jenkins_remotedocker']) {          
+                        
         sh "ssh -o StrictHostKeyChecking=no cotin@172.16.0.11 ${dockerRun}"
         
         }
     }
+    
+    stage ('Docker ls') {
+        
+        def dockerls = 'docker container ls'
+        
+        sshagent(['jenkins_remotedocker']) {          
+                        
+        sh "ssh -o StrictHostKeyChecking=no cotin@172.16.0.11 ${dockerls}"
+        }
+    }
 }
-
-
