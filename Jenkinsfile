@@ -1,5 +1,5 @@
 node {
-    stage('Example') {
+    stage('Docker build e push') {
     checkout scm
 
     docker.withRegistry('https://registrysfiems.azurecr.io', 'ACR') {
