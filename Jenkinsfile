@@ -9,4 +9,17 @@ node {
         customImage.push()
         }
     }
+    
+    stage ('Deploy docker remoto') {
+        
+        def dockerRun = 'docker container run -d -p 9005:80 nginx'
+        
+        sshagent(['jenkins_remotedocker']) {
+        
+        sh "ssh -o StrictHostKeyChecking=no cotin@172.16.0.11 ${dockerRun}"
+        
+        }
+    }
 }
+
+
